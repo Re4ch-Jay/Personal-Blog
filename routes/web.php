@@ -20,3 +20,11 @@ Route::get('/', function () {
 Route::get('/post/{id}', function () {
     return view('posts.show');
 });
+
+Route::get('/register', function () {
+    return view('auth.register');
+});
+
+Route::get('/login', function () {
+    return view('auth.login');
+});
