@@ -16,6 +16,10 @@
           <x-nav-link page='Home'/>
           <x-nav-link page='About'/>
           <x-nav-link page='Service'/>
+          <form method="POST" action="/logout">
+            @csrf
+            <button type="submit">Logout</button>
+          </form>
           <li>
             <a class="block py-2 cursor-pointer pl-3 pr-4 bg-blue-500 text-white rounded items-center ">Login</a>
           </li>
