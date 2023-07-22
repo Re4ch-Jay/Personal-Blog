@@ -24,10 +24,12 @@ Route::get('/post/{id}', function () {
     return view('posts.show');
 });
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 
-Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
-Route::post('/login', [LoginController::class, 'store'])->middleware('guest');
+Route::middleware(['guest'])->group(function () {
+    Route::resource('register', RegisterController::class)->only(['index', 'store']);
+    Route::resource('login', LoginController::class)->only(['index', 'store']);
+});
 
-Route::post('/logout', [LogoutController::class, 'destroy'])->middleware('auth');
+Route::middleware(['auth'])->group(function () {
+    Route::post('/logout', [LogoutController::class, 'destroy']);
+});
