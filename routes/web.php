@@ -24,6 +24,9 @@ Route::get('/post/{id}', function () {
     return view('posts.show');
 });
 
+Route::get('/about', function () {
+    return view('about.index');
+});
 
 Route::middleware(['guest'])->group(function () {
     Route::resource('register', RegisterController::class)->only(['index', 'store']);
