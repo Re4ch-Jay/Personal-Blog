@@ -22,8 +22,8 @@ Route::get('/post/{id}', function () {
     return view('posts.show');
 });
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware(['guest']);
-Route::post('/register', [RegisterController::class, 'store'])->middleware(['guest']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 
 Route::get('/login', function () {
     return view('auth.login');
