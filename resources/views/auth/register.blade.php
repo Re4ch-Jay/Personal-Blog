@@ -7,5 +7,6 @@
         <x-form.input-label name="password_confirmation" type="password" placeholder="*****************"/>
         <x-form.check-input name="terms"/>
         <x-button-submit name="Register"/>
+        <a href="/login">Already have account? <span class="text-blue-700">Login</span> </a>
     </form>
 </x-layout>

@@ -7,5 +7,6 @@
         @if (Session::has('message'))
            <p class="text-red-500 text-sm mt-5">{{Session::get('message')}}</p> 
         @endif
+        <a href="/register">Don't have account? <span class="text-blue-700">Register</span> </a>
     </form>
 </x-layout>
