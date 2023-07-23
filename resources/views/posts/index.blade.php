@@ -14,7 +14,7 @@
                         <x-card.header title="{{$post->category->name}}" date="{{$post->created_at->diffForHumans()}}"/>
                         <x-card.title title="{{$post->title}}"/>
                         <x-card.description description="{{$post->description}}"/>
-                        <x-card.footer name="{{$post->author->name}}" />
+                        <x-card.footer name="{{$post->author->name}}" link="/post/{{$post->id}}" />
                     </x-card.layout>    
                 @endforeach
             </div>  
