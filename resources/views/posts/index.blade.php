@@ -9,15 +9,14 @@
             <x-search/>
             
             <div class="grid gap-8 lg:grid-cols-2">
-                @for ($i = 0; $i <= 100; $i++)
+                @foreach ($posts as $post)
                     <x-card.layout>
-                        <x-card.header title="News"/>
-                        <x-card.title title="How to quickly deploy a static website"/>
-                        <x-card.description description="Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers influence both web designers and developers.
-                        "/>
-                        <x-card.footer name="John Doe" />
-                    </x-card.layout>
-                @endfor
+                        <x-card.header title="{{$post->category->name}}"/>
+                        <x-card.title title="{{$post->title}}"/>
+                        <x-card.description description="{{$post->description}}"/>
+                        <x-card.footer name="{{$post->author->name}}" />
+                    </x-card.layout>    
+                @endforeach
             </div>  
         </div>
       </section>
