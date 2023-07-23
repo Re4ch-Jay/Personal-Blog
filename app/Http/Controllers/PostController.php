@@ -68,7 +68,12 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $categories = Category::all();
+
+        return view('posts.edit', [
+            'categories' => $categories,
+            'post' => $post,
+        ]);
     }
 
     /**
@@ -76,7 +81,20 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title' => ['required'],
+            'description' => ['required'],
+            'category_id' => ['required', Rule::exists('categories', 'id')],
+        ]);
+
+        $post->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'user_id' => auth()->user()->id,
+        ]);
+
+        return redirect('/');
     }
 
     /**
