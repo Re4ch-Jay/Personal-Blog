@@ -39,14 +39,13 @@ class PostController extends Controller
             'title' => ['required'],
             'description' => ['required'],
             'category_id' => ['required', Rule::exists('categories', 'id')],
-            'user_id' => ['required'],
         ]);
 
         Post::create([
             'title' => request()->title,
             'description' => request()->description,
             'category_id' => request()->category_id,
-            'user_id' => auth()->user(),
+            'user_id' => auth()->user()->id,
         ]);
 
         return redirect('/');

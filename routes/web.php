@@ -21,7 +21,6 @@ Route::get('/', function () {
     return redirect('/post');
 });
 
-Route::resource('post', PostController::class)->only(['index', 'show']);
 
 Route::get('/about', function () {
     return view('about.index');
@@ -34,5 +33,7 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [LogoutController::class, 'destroy']);
-    Route::resource('post', PostController::class)->only(['create', 'edit', 'destroy']);
+    Route::resource('post', PostController::class)->only(['create', 'edit', 'destroy', 'store', 'update']);
 });
+
+Route::resource('post', PostController::class)->only(['index', 'show']);
