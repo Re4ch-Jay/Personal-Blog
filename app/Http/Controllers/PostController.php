@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -13,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('posts.index');
     }
 
     /**
@@ -21,15 +23,33 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+
+        return view('posts.create', [
+            'categories' => $categories,
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        request()->validate([
+            'title' => ['required'],
+            'description' => ['required'],
+            'category_id' => ['required', Rule::exists('categories', 'id')],
+            'user_id' => ['required'],
+        ]);
+
+        Post::create([
+            'title' => request()->title,
+            'description' => request()->description,
+            'category_id' => request()->category_id,
+            'user_id' => auth()->user(),
+        ]);
+
+        return redirect('/');
     }
 
     /**
@@ -37,7 +57,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('posts.show');
     }
 
     /**

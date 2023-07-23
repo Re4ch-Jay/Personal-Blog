@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,12 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('posts.index');
+    return redirect('/post');
 });
 
-Route::get('/post/{id}', function () {
-    return view('posts.show');
-});
+Route::resource('post', PostController::class);
 
 Route::get('/about', function () {
     return view('about.index');
