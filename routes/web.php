@@ -28,7 +28,8 @@ Route::get('/about', function () {
 
 Route::middleware(['guest'])->group(function () {
     Route::resource('register', RegisterController::class)->only(['index', 'store']);
-    Route::resource('login', LoginController::class)->only(['index', 'store']);
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'store'])->name('login');
 });
 
 Route::middleware(['auth'])->group(function () {
