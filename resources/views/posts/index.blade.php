@@ -11,7 +11,7 @@
             <div class="grid gap-8 lg:grid-cols-2">
                 @foreach ($posts as $post)
                     <x-card.layout>
-                        <x-card.header title="{{$post->category->name}}"/>
+                        <x-card.header title="{{$post->category->name}}" date="{{$post->created_at->diffForHumans()}}"/>
                         <x-card.title title="{{$post->title}}"/>
                         <x-card.description description="{{$post->description}}"/>
                         <x-card.footer name="{{$post->author->name}}" />
