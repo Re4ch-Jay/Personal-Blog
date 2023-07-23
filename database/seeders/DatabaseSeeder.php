@@ -18,8 +18,10 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
+        //     'name' => 'Panhareach',
+        //     'email' => 'panhareach.phat@student.cadt.edu.kh',
+        //     'password' => '12345678',
+        //     'terms' => 1,
         // ]);
 
         // Post::factory(150)->create();
