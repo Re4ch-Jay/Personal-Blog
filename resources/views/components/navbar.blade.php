@@ -16,12 +16,18 @@
           <x-nav-link page='Home' link="/"/>
           <x-nav-link page='About' link="/about"/>
           <x-nav-link page='Service' link="/"/>
+          
+          @if (auth()->user()?->name === 'Panhareach Phat')
+            <x-nav-link page='Create' link="/post/create"/>
+          @endif
+
           @auth
             <form method="POST" action="/logout">
               @csrf
               <x-button-submit name="Logout"/>
             </form>
           @endauth
+          
           @guest
             <li>
               <a href="/login" class="py-2 cursor-pointer pl-3 pr-4 bg-blue-700 text-white rounded items-center">Login</a>
