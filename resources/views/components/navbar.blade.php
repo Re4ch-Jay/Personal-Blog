@@ -18,7 +18,7 @@
           <x-nav-link page='Service' link="/"/>
           
           @if (auth()->user()?->name === 'Panhareach Phat')
-            <x-nav-link page='Create' link="/post/create"/>
+            <x-nav-link page='Admin' link="/admin"/>
           @endif
 
           @auth

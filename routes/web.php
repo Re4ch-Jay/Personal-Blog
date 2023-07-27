@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
@@ -38,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['admin'])->group(function () {
     Route::resource('post', PostController::class)->only(['create', 'edit', 'destroy', 'store', 'update']);
+    Route::get('/admin', [AdminController::class, 'index']);
 });
 
 Route::resource('post', PostController::class)->only(['index', 'show']);

@@ -5,16 +5,6 @@
         <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
             <header class="mb-4 lg:mb-6 not-format">
                 <x-user-info name='{{$post->author->name}}' date='{{$post->created_at}}'/>
-                @if (auth()->user()?->name === 'Panhareach Phat')
-                    <div class="flex justify-between">
-                        <x-primary-button link="/post/{{$post->id}}/edit" name="Edit this post"/>
-                        <form method="POST" action="/post/{{$post->id}}/">
-                            @method("DELETE")
-                            @csrf
-                            <x-button-submit name="Delete"/>
-                        </form>
-                    </div>
-                @endif
                 <x-article-title title="{{$post->title}}"/>
             </header>
             <x-article/>
