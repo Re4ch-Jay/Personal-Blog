@@ -28,11 +28,7 @@
                         <td class="px-6 py-4 flex flex-row justify-between">
                             <a href="/post/{{$post->id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
                             <a href="/post/{{$post->id}}/edit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            <form method="POST" action="/post/{{$post->id}}">
-                                @method("DELETE")
-                                @csrf
-                                <x-button-submit name="Delete"/>
-                            </form>
+                            <x-button-delete post="{{$post->id}}"/>
                         </td>
                     </tr>
                 @endforeach
