@@ -7,7 +7,7 @@
                 <x-user-info name='{{$post->author->name}}' date='{{$post->created_at}}'/>
                 <x-article-title title="{{$post->title}}"/>
             </header>
-            <x-article/>
+            <x-article :post="$post"/>
             <x-comment/>
         </article>
     </div>
