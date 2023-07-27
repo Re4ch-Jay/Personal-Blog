@@ -18,6 +18,9 @@
                     </x-card.layout>    
                 @endforeach
             </div>  
+            <div class="my-5">
+                {{$posts->links()}}
+            </div>
         </div>
       </section>
 </x-layout>

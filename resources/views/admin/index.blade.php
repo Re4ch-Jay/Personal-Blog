@@ -37,5 +37,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="my-5">
+            {{$posts->links()}}
+        </div>
     </div>
 </x-layout>

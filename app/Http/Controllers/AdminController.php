@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->get();
+        $posts = Post::latest()->simplePaginate(20);
 
         return view('admin.index', [
             'posts' => $posts
