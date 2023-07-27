@@ -36,18 +36,12 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store()
+    public function store(Request $request)
     {
 
         $this->validation();
 
-        Post::create([
-            'title' => request()->title,
-            'description' => request()->description,
-            'markdown' => request()->markdown,
-            'category_id' => request()->category_id,
-            'user_id' => auth()->user()->id,
-        ]);
+        Post::create($this->attributes($request));
 
         return redirect('/admin');
     }
@@ -72,13 +66,7 @@ class AdminController extends Controller
     {
         $this->validation();
 
-        $post->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'markdown' => $request->markdown,
-            'category_id' => $request->category_id,
-            'user_id' => auth()->user()->id,
-        ]);
+        $post->update($this->attributes($request));
 
         return redirect('/admin');
     }
@@ -100,5 +88,16 @@ class AdminController extends Controller
             'markdown' => ['required'],
             'category_id' => ['required', Rule::exists('categories', 'id')],
         ]);
+    }
+
+    public function attributes($request)
+    {
+        return [
+            'title' => $request->title,
+            'description' => $request->description,
+            'markdown' => $request->markdown,
+            'category_id' => $request->category_id,
+            'user_id' => auth()->user()->id,
+        ];
     }
 }
