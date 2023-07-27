@@ -1,6 +1,7 @@
 <x-layout>  
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">  
         <x-primary-button link="/post/create" name="Create Post"/>
+        <x-search page="admin" :categories="$categories"/>
         <table class="mt-10 w-full text-left text-lg text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>

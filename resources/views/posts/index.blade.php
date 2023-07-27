@@ -6,7 +6,7 @@
                 <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">We use an agile approach to test assumptions and connect with the needs of your audience early and often.</p>
             </div> 
                   
-            <x-search :categories="$categories"/>
+            <x-search page="post" :categories="$categories"/>
             
             <div class="grid gap-8 lg:grid-cols-2">
                 @foreach ($posts as $post)
