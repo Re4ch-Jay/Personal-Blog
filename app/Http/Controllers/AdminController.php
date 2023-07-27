@@ -38,15 +38,13 @@ class AdminController extends Controller
      */
     public function store()
     {
-        request()->validate([
-            'title' => ['required'],
-            'description' => ['required'],
-            'category_id' => ['required', Rule::exists('categories', 'id')],
-        ]);
+
+        $this->validation();
 
         Post::create([
             'title' => request()->title,
             'description' => request()->description,
+            'markdown' => request()->markdown,
             'category_id' => request()->category_id,
             'user_id' => auth()->user()->id,
         ]);
@@ -72,15 +70,12 @@ class AdminController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $request->validate([
-            'title' => ['required'],
-            'description' => ['required'],
-            'category_id' => ['required', Rule::exists('categories', 'id')],
-        ]);
+        $this->validation();
 
         $post->update([
             'title' => $request->title,
             'description' => $request->description,
+            'markdown' => $request->markdown,
             'category_id' => $request->category_id,
             'user_id' => auth()->user()->id,
         ]);
@@ -95,5 +90,15 @@ class AdminController extends Controller
     {
         $post->delete();
         return redirect('/admin');
+    }
+
+    public function validation()
+    {
+        return request()->validate([
+            'title' => ['required'],
+            'description' => ['required'],
+            'markdown' => ['required'],
+            'category_id' => ['required', Rule::exists('categories', 'id')],
+        ]);
     }
 }
