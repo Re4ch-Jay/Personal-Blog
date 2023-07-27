@@ -32,9 +32,7 @@ class CommentController extends Controller
      */
     public function store(Request $request, Post $post)
     {
-        $request->validate([
-            'body' => ['required'],
-        ]);
+        $this->validation();
 
         Comment::create([
             'body' => $request->body,
@@ -68,9 +66,7 @@ class CommentController extends Controller
     {
         $this->authorize('update', $comment);
 
-        $request->validate([
-            'body' => ['required'],
-        ]);
+        $this->validation();
 
         $comment->update([
             'body' => $request->body,
@@ -89,5 +85,12 @@ class CommentController extends Controller
         $comment->delete();
 
         return back();
+    }
+
+    public function validation()
+    {
+        return request()->validate([
+            'body' => ['required'],
+        ]);
     }
 }
