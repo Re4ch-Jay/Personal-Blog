@@ -54,7 +54,7 @@ class PostController extends Controller
             'user_id' => auth()->user()->id,
         ]);
 
-        return redirect('/');
+        return redirect('/admin');
     }
 
     /**
@@ -98,7 +98,7 @@ class PostController extends Controller
             'user_id' => auth()->user()->id,
         ]);
 
-        return redirect('/');
+        return redirect('/admin');
     }
 
     /**
@@ -107,6 +107,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect('/');
+        return redirect('/admin');
     }
 }
