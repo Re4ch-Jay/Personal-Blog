@@ -28,7 +28,7 @@
                         <td class="px-6 py-4 flex flex-row justify-between">
                             <a href="/post/{{$post->id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
                             <a href="/post/{{$post->id}}/edit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            <x-button-delete post="{{$post->id}}"/>
+                            <x-button-delete action="post/{{$post->id}}" name="Post"/>
                         </td>
                     </tr>
                 @endforeach

@@ -13,11 +13,7 @@
 
     @foreach ($post->comments as $comment)
         <x-comment.card 
-            :post="$post"
             :comment="$comment"
-            name="{{$comment->user->name}}" 
-            created_at="{{$comment->created_at}}" 
-            body="{{$comment->body}}" 
         />
     @endforeach
 {{--     
