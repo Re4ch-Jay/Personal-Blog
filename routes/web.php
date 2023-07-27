@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
@@ -35,6 +36,9 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [LogoutController::class, 'destroy']);
+    Route::post('/post/{post}/comment', [CommentController::class, 'store']);
+    Route::delete('/post/{comment}/comment', [CommentController::class, 'destroy']);
+    Route::put('/post/{comment}/comment', [CommentController::class, 'update']);
 });
 
 Route::middleware(['admin'])->group(function () {

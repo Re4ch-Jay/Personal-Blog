@@ -8,7 +8,7 @@
                 <x-article-title title="{{$post->title}}"/>
             </header>
             <x-article :post="$post"/>
-            <x-comment/>
+            <x-comment :post="$post"/>
         </article>
     </div>
 </main>
