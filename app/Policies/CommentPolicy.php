@@ -20,7 +20,7 @@ class CommentPolicy
         return $comment->user()->is($user);
     }
 
-    public function delete(User $user, Comment $comment)
+    public function destroy(User $user, Comment $comment)
     {
         return $this->update($user, $comment);
     }
