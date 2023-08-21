@@ -1,5 +1,5 @@
 <x-layout>
-    <form method="POST" action="/post" class="py-8 px-4 mx-auto max-w-screen-sm lg:py-16 lg:px-6">
+    <form method="POST" action="{{ route('post.store') }}" class="py-8 px-4 mx-auto max-w-screen-sm lg:py-16 lg:px-6">
         @csrf
         <x-form.input-create name="title" type="text" placeholder="Laravel Backend"/>
         <x-form.input-create name="description" type="text" placeholder="Lorem ipsum..."/>

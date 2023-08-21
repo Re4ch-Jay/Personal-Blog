@@ -1,5 +1,5 @@
 <x-layout>
-    <form method="POST" action="/post/{{$post->id}}" class="py-8 px-4 mx-auto max-w-screen-sm lg:py-16 lg:px-6">
+    <form method="POST" action="{{ route('post.update', $post->id) }}" class="py-8 px-4 mx-auto max-w-screen-sm lg:py-16 lg:px-6">
         @method("PUT")
         @csrf
         <x-form.input-edit name="title" type="text" value="{{$post->title}}" placeholder="Laravel Backend" />
