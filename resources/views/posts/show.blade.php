@@ -12,9 +12,8 @@
         </article>
     </div>
 </main>
-  
-  <x-related-article/>
-    
-  <x-newsletter/>
+
+    <x-related-article :relatedPosts="$relatedPosts"/>
+    <x-newsletter/>
 
 </x-layout>

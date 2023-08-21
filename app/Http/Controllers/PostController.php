@@ -28,8 +28,11 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        $relatedPosts = Post::latest()->limit(4)->get();
+
         return view('posts.show', [
             'post' => $post,
+            'relatedPosts'=> $relatedPosts
         ]);
     }
 }

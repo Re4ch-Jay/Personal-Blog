@@ -14,13 +14,18 @@ class CommentPolicy
     {
         //
     }
+    
+    public function create(User $user)
+    {
+        return $user;
+    }
 
     public function update(User $user, Comment $comment)
     {
         return $comment->user()->is($user);
     }
 
-    public function destroy(User $user, Comment $comment)
+    public function delete(User $user, Comment $comment)
     {
         return $this->update($user, $comment);
     }

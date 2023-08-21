@@ -2,14 +2,17 @@
 <section class="not-format">
     <x-comment.title/>
 
-    <form method="POST" action="/post/{{$post->id}}/comment" class="mb-6">
-        @csrf
-        <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-            <label for="comment" class="sr-only">Your comment</label>
-            <x-form.textarea-create name="body"/>
-        </div>
-        <x-button-submit name="Comment"/>
-    </form>
+    @can('create', \App\Models\Comment::class)
+        <form method="POST" action="/post/{{$post->id}}/comment" class="mb-6">
+            @csrf
+            <div
+                class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+                <label for="comment" class="sr-only">Your comment</label>
+                <x-form.textarea-create name="body" />
+            </div>
+            <x-button-submit name="Comment" />
+        </form>
+    @endcan
 
     @foreach ($post->comments as $comment)
         <x-comment.card 

@@ -35,11 +35,14 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::post('/logout', [LogoutController::class, 'destroy']);
-    Route::post('/post/{post}/comment', [CommentController::class, 'store']);
-    Route::delete('/post/{comment}/comment', [CommentController::class, 'destroy']);
-    Route::get('/post/{comment}/comment/edit', [CommentController::class, 'edit']);
-    Route::put('/post/{comment}/comment', [CommentController::class, 'update']);
+    Route::post('/logout', [LogoutController::class, 'destroy'])->name('logout');
+    
+    Route::prefix('post')->group(function () {
+        Route::post('{post}/comment', [CommentController::class, 'store']);
+        Route::delete('{comment}/comment', [CommentController::class, 'destroy']);
+        Route::get('{comment}/comment/edit', [CommentController::class, 'edit']);
+        Route::put('{comment}/comment', [CommentController::class, 'update']);
+    });
 });
 
 Route::middleware(['admin'])->group(function () {
