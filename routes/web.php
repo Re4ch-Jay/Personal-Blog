@@ -47,7 +47,9 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
-    Route::resource('post', AdminController::class)->only(['create', 'edit', 'destroy', 'store', 'update']);
+    Route::prefix('admin')->group(function () {
+        Route::resource('post', AdminController::class)->only(['create', 'edit', 'destroy', 'store', 'update']);
+    });
 });
 
 Route::resource('post', PostController::class)->only(['index', 'show']);

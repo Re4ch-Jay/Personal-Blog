@@ -1,6 +1,6 @@
 <x-layout>  
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">  
-        <x-primary-button link="/post/create" name="Create Post"/>
+        <x-primary-button link="{{ route('post.create') }}" name="Create Post"/>
         <x-search page="admin" :categories="$categories"/>
         <table class="mt-10 w-full text-left text-lg text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -26,9 +26,9 @@
                             {{$post->created_at}}
                         </td>
                         <td class="px-6 py-4 flex flex-row justify-between">
-                            <a href="/post/{{$post->id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
-                            <a href="/post/{{$post->id}}/edit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            <x-button-delete action="post/{{$post->id}}" name="Post"/>
+                            <a href="{{ route('post.show', $post->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+                            <a href="{{ route('post.edit', $post->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <x-button-delete action="{{ route('post.destroy', $post->id) }}" name="Post"/>
                         </td>
                     </tr>
                 @endforeach
